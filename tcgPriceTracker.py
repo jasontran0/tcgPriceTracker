@@ -85,6 +85,8 @@ def main():
     products = fetch_products()
     all_product_data = []
 
+    print(f"Fetching data for {len(products)} products...")
+    
     for product in products:
         product_id = product["productId"]
         product_details = fetch_product_details(product_id)
