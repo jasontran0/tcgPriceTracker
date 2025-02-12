@@ -19,7 +19,7 @@ celery.conf.update(result_backend=os.environ['CELERY_RESULT_BACKEND'])
 
 # 🔹 Asynchronous Task: Runs in Background
 @celery.task
-def run_tcg_tracker_and_send(channel_id):
+def run_tcg_tracker_and_send(dm_channel_id):
     """Background job to run TCG script and send the file."""
     file_path = "/Users/kyzubs/tcgPriceTracker/tcg_price_data.csv"
     
@@ -28,7 +28,7 @@ def run_tcg_tracker_and_send(channel_id):
 
     # Upload the CSV file to the user's DM
     response = client.files_upload_v2(
-        channels=channel_id,
+        channels=dm_channel_id,
         file=file_path,
         title="TCG Prices",
         initial_comment="Here is the latest price list."
